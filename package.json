@@ -1,0 +1,28 @@
+{
+  "name": "demo-app-svc1",
+  "version": "1.0.0",
+  "description": "svc1",
+  "main": "./server/index.js",
+  "repository": "https://github.com/rkrmr33/demo-app-svc1.git",
+  "author": "rkrmr33 <roikramer120@gmail.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "node server",
+    "start:dev": "nodemon server",
+    "clean": "rm -rf dist",
+    "pkg": "node ./hack/docker.build.js",
+    "push": "node ./hack/docker.push.js",
+    "lint": "eslint . --fix"
+  },
+  "devDependencies": {
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^5.0.0-alpha.8",
+    "express-winston": "^4.2.0",
+    "winston": "^3.3.3"
+  }
+}

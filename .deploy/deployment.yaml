@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app-svc1
+spec:
+  selector:
+    matchLabels:
+      app: demo-app-svc1
+  template:
+    metadata:
+      labels:
+        app: demo-app-svc1
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+      containers:
+        - name: demo-app-svc1
+          image: quay.io/roikramer120/demo-app-svc1
+          env:
+            - name: ENV
+              value: production
+          securityContext:
+            allowPrivilegeEscalation: false
+          ports:
+            - name: http
+              containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            limits:
+              cpu: 800m
+              memory: 2048Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          imagePullPolicy: IfNotPresent
+      terminationGracePeriodSeconds: 10
