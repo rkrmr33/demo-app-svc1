@@ -26,17 +26,17 @@ spec:
             allowPrivilegeEscalation: false
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 8081
           livenessProbe:
             httpGet:
               path: /healthz
-              port: 8080
+              port: 8081
             initialDelaySeconds: 15
             periodSeconds: 20
           readinessProbe:
             httpGet:
               path: /readyz
-              port: 8080
+              port: 8081
             initialDelaySeconds: 5
             periodSeconds: 10
           resources:
