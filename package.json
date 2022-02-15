@@ -1,6 +1,6 @@
 {
   "name": "demo-app-svc1",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "svc1",
   "main": "./server/index.js",
   "repository": "https://github.com/rkrmr33/demo-app-svc1.git",
